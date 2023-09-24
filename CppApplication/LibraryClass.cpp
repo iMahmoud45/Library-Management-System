@@ -12,6 +12,7 @@ void Library::Search() {
 	string name;
 	bool found = false;
 	int bookIndex;
+	string ask;
 	if (Books.size() == 0) {
 		cout << "\nThere's no books in the library. " << endl;
 	}
@@ -32,7 +33,22 @@ void Library::Search() {
 			cout << "The Year: " << Books.at(bookIndex).year << endl;
 		}
 		else {
-			cout << "Book was not found. " << endl;
+			cout << "\nBook was not found. " << endl;
+			do {
+				cin.ignore();
+				cout << "Do you want to search again? (Y/N) " << endl;
+				getline(cin, ask);
+				if (ask == "Y" || ask == "y") {
+					Search();
+				}
+				else if (ask == "n" || ask == "N") {
+					break;
+				}
+				else {
+					cout << "Wrong Input, please try again. " << endl;
+					continue;
+				}
+			} while (true);
 		}
 	}
 }
